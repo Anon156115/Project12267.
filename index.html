@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Booking Enhanced</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://img2.pic.in.th/pic/Major_Cineplex_Logo.svg.png" alt="Cinema Logo">
+                <span>CineMagic</span>
+            </a>
+            <nav>
+                <a href="javascript:void(0);" id="nav-link-movies" class="nav-link active"><i class="fas fa-film"></i> ภาพยนตร์</a>
+                <a href="javascript:void(0);" id="nav-link-branches" class="nav-link"><i class="fas fa-map-marker-alt"></i> สาขา</a>
+                <a href="javascript:void(0);" id="nav-link-promotions" class="nav-link"><i class="fas fa-percent"></i> โปรโมชั่น</a>
+                <a href="#" class="nav-link login-link"><i class="fas fa-user-circle"></i> เข้าสู่ระบบ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+
+        <section class="progress-section">
+             <div class="progress-steps">
+                <div class="step active" id="step-1">
+                    <span class="step-icon">1</span>
+                    <span class="step-label">เลือกภาพยนตร์/รอบ</span>
+                </div>
+                <div class="step" id="step-2">
+                    <span class="step-icon">2</span>
+                     <span class="step-label">เลือกที่นั่ง & F&B</span>
+                </div>
+                <div class="step" id="step-3">
+                    <span class="step-icon">3</span>
+                     <span class="step-label">สรุปรายการ/ชำระเงิน</span>
+                </div>
+            </div>
+        </section>
+
+        <div id="booking-flow-section">
+            <section class="content-section movie-selection">
+                <h2 class="section-title"><i class="fas fa-fire"></i> ภาพยนตร์ยอดนิยม</h2>
+                 <div class="movie-grid">
+                    <div class="movie-card active" data-movie-id="lahnmah" data-movie-title="หลานม่า" data-poster="https://img2.pic.in.th/pic/thumb_3972.jpg" data-youtube-id="YOUR_YOUTUBE_ID_1">
+                        <div class="movie-card-poster">
+                            <img src="https://img2.pic.in.th/pic/thumb_3972.jpg" alt="หลานม่า Poster">
+                            <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_1"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                                <span class="movie-rating"><i class="fas fa-star"></i> 8.5</span>
+                            </div>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-card-title">หลานม่า</h3>
+                            <p class="movie-card-genre">ดราม่า / ครอบครัว</p>
+                        </div>
+                    </div>
+
+                     <div class="movie-card" data-movie-id="theston" data-movie-title="เดอะ สโตน พระแท้ คนเก๊" data-poster="https://img2.pic.in.th/pic/thumb_446535ff45151c36ecd2.jpg" data-youtube-id="YOUR_YOUTUBE_ID_2">
+                        <div class="movie-card-poster">
+                            <img src="https://img2.pic.in.th/pic/thumb_446535ff45151c36ecd2.jpg" alt="เดอะ สโตน พระแท้ คนเก๊ Poster">
+                             <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_2"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                                <span class="movie-rating"><i class="fas fa-star"></i> 7.2</span>
+                            </div>
+                        </div>
+                         <div class="movie-card-info">
+                            <h3 class="movie-card-title">เดอะ สโตน พระแท้ คนเก๊</h3>
+                            <p class="movie-card-genre">ตลก / แอ็คชั่น</p>
+                        </div>
+                    </div>
+
+                     <div class="movie-card" data-movie-id="minecraft" data-movie-title="ไมน์คราฟต์ มูฟวี่" data-poster="https://img5.pic.in.th/file/secure-sv1/thumb_4242-1.jpg" data-youtube-id="YOUR_YOUTUBE_ID_3">
+                        <div class="movie-card-poster">
+                             <img src="https://img5.pic.in.th/file/secure-sv1/thumb_4242-1.jpg" alt="ไมน์คราฟต์ มูฟวี่ Poster">
+                             <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_3"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                            </div>
+                        </div>
+                         <div class="movie-card-info">
+                             <h3 class="movie-card-title">ไมน์คราฟต์ มูฟวี่</h3>
+                             <p class="movie-card-genre">ผจญภัย / แอนิเมชั่น</p>
+                         </div>
+                    </div>
+
+                    <div class="movie-card" data-movie-id="ฮาลาบาลา ป่าจิตหลุด" data-movie-title="ฮาลาบาลา ป่าจิตหลุด" data-poster="https://img5.pic.in.th/file/secure-sv1/thumb_4192-1.jpg" data-youtube-id="YOUR_YOUTUBE_ID_4">
+                        <div class="movie-card-poster">
+                            <img src="https://img5.pic.in.th/file/secure-sv1/thumb_4192-1.jpg" alt="ฮาลาบาลา ป่าจิตหลุด Poster">
+                             <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_4"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                            </div>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-card-title">ฮาลาบาลา ป่าจิตหลุด</h3>
+                            <p class="movie-card-genre">ตลก</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" data-movie-id="สโนว์ไวท์" data-movie-title="สโนว์ไวท์" data-poster="https://img5.pic.in.th/file/secure-sv1/thumb_3681-1.jpg" data-youtube-id="YOUR_YOUTUBE_ID_5">
+                        <div class="movie-card-poster">
+                             <img src="https://img5.pic.in.th/file/secure-sv1/thumb_3681-1.jpg" alt="สโนว์ไวท์ Poster">
+                             <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_5"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                            </div>
+                        </div>
+                        <div class="movie-card-info">
+                            <h3 class="movie-card-title">สโนว์ไวท์</h3>
+                            <p class="movie-card-genre">แฟนตาซี / แอนิเมชั่น</p>
+                        </div>
+                    </div>
+
+                    <div class="movie-card" data-movie-id="รับคำสั่งตาย" data-movie-title="รับคำสั่งตาย" data-poster="https://img2.pic.in.th/pic/thumb_4426.jpg" data-youtube-id="YOUR_YOUTUBE_ID_6">
+                        <div class="movie-card-poster">
+                             <img src="https://img2.pic.in.th/pic/thumb_4426.jpg" alt="รับคำสั่งตาย Poster">
+                              <div class="movie-card-overlay">
+                                <button class="btn btn-trailer" data-youtube-id="YOUR_YOUTUBE_ID_6"> <i class="fas fa-play"></i> ตัวอย่าง</button>
+                                <span class="movie-rating"><i class="fas fa-star"></i> 6.8</span>
+                            </div>
+                         </div>
+                         <div class="movie-card-info">
+                             <h3 class="movie-card-title">รับคำสั่งตาย</h3>
+                             <p class="movie-card-genre">สยองขวัญ</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section class="content-section booking-details">
+                 <div class="movie-info-display">
+                    <img id="current-poster" src="https://img2.pic.in.th/pic/thumb_3972.jpg" alt="Selected Movie Poster">
+                    <h3 id="current-movie-title">หลานม่า</h3>
+                 </div>
+
+                <div class="options-container">
+                     <div class="option-group">
+                        <label for="branch" class="option-label"><i class="fas fa-map-marked-alt"></i> สาขา</label>
+                        <select id="branch" class="form-select">
+                            <option value="รัชโยธิน">เมเจอร์ ซีนีเพล็กซ์ รัชโยธิน</option>
+                            <option value="สุขุมวิท">เมเจอร์ ซีนีเพล็กซ์ สุขุมวิท</option>
+                            <option value="รังสิต">เมเจอร์ ซีนีเพล็กซ์ รังสิต</option>
+                             <option value="พารากอน">พารากอน ซีนีเพล็กซ์</option>
+                             <option value="ไอคอน">ไอคอน ซีเนคอนิค</option>
+                             <option value="เอสพลานาด รัชดา">เอสพลานาด ซีนีเพล็กซ์ รัชดาภิเษก</option>
+                             <option value="เมกา บางนา">เมกา ซีนีเพล็กซ์</option>
+                        </select>
+                    </div>
+                     <div class="option-group">
+                         <label for="show-date" class="option-label"><i class="fas fa-calendar-alt"></i> วันที่</label>
+                         <input type="date" id="show-date" class="form-input">
+                     </div>
+                    <div class="option-group showtime-group">
+                         <label class="option-label"><i class="fas fa-clock"></i> รอบฉาย</label>
+                        <div class="showtimes">
+                            <button class="btn time-btn" data-time="10:30">10:30</button>
+                            <button class="btn time-btn" data-time="11:45">11:45</button>
+                            <button class="btn time-btn" data-time="13:00">13:00</button>
+                            <button class="btn time-btn" data-time="14:15">14:15</button>
+                            <button class="btn time-btn" data-time="15:30">15:30</button>
+                            <button class="btn time-btn" data-time="16:45">16:45</button>
+                            <button class="btn time-btn" data-time="18:00">18:00</button>
+                            <button class="btn time-btn" data-time="19:15">19:15</button>
+                            <button class="btn time-btn" data-time="20:30">20:30</button>
+                            <button class="btn time-btn" data-time="21:45">21:45</button>
+                        </div>
+                     </div>
+                </div>
+            </section>
+
+            <section class="content-section seating-plan hidden" id="seating-section">
+                <div class="seating-header">
+                     <h2 class="section-title"><i class="fas fa-couch"></i> เลือกที่นั่งของคุณ</h2>
+                     <div class="countdown">
+                         <i class="fas fa-hourglass-half"></i> เหลือเวลา: <span id="timer">10:00</span>
+                     </div>
+                </div>
+
+                <div class="screen-container">
+                    <div class="screen">SCREEN</div>
+                    <div class="seats">
+                        <div class="seat premium" data-seat="A1" data-price="250">A1</div>
+                        <div class="seat premium occupied" data-seat="A2" data-price="250" title="ที่นั่งไม่ว่าง">A2</div>
+                        <div class="seat premium" data-seat="A3" data-price="250">A3</div>
+                        <div class="seat premium" data-seat="A4" data-price="250">A4</div>
+                        <div class="seat premium occupied" data-seat="A5" data-price="250" title="ที่นั่งไม่ว่าง">A5</div>
+                        <div class="seat premium" data-seat="A6" data-price="250">A6</div>
+
+                        <div class="seat normal" data-seat="B1" data-price="180">B1</div>
+                        <div class="seat normal" data-seat="B2" data-price="180">B2</div>
+                        <div class="seat normal" data-seat="B3" data-price="180">B3</div>
+                        <div class="seat normal occupied" data-seat="B4" data-price="180" title="ที่นั่งไม่ว่าง">B4</div>
+                        <div class="seat normal" data-seat="B5" data-price="180">B5</div>
+                        <div class="seat normal" data-seat="B6" data-price="180">B6</div>
+
+                        <div class="seat honeymoon" data-seat="C1-C2" data-price="500">C1-C2</div>
+                        <div class="seat honeymoon occupied" data-seat="C3-C4" data-price="500" title="ที่นั่งไม่ว่าง">C3-C4</div>
+                        <div class="seat honeymoon" data-seat="C5-C6" data-price="500">C5-C6</div>
+
+                        <div class="seat normal" data-seat="D1" data-price="180">D1</div>
+                        <div class="seat normal" data-seat="D2" data-price="180">D2</div>
+                        <div class="seat normal" data-seat="D3" data-price="180">D3</div>
+                        <div class="seat normal" data-seat="D4" data-price="180">D4</div>
+                        <div class="seat normal" data-seat="D5" data-price="180">D5</div>
+                        <div class="seat normal" data-seat="D6" data-price="180">D6</div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-sample seat normal"></div> Normal (<span class="seat-price">180</span>฿)</div>
+                    <div class="legend-item"><div class="legend-sample seat premium"></div> Premium (<span class="seat-price">250</span>฿)</div>
+                    <div class="legend-item"><div class="legend-sample seat honeymoon"></div> Honeymoon (<span class="seat-price">500</span>฿)</div>
+                    <div class="legend-item"><div class="legend-sample seat selected"></div> ที่เลือก</div>
+                    <div class="legend-item"><div class="legend-sample seat occupied"></div> ไม่ว่าง</div>
+                </div>
+            </section>
+
+            <section class="content-section fb-selection hidden" id="fb-section">
+                <h2 class="section-title"><i class="fas fa-utensils"></i> เลือกอาหารและเครื่องดื่ม</h2>
+                <div class="fb-items-grid">
+                    <div class="fb-item-card" data-fb-id="popcorn-l" data-fb-name="ป๊อปคอร์น (L)" data-fb-price="150">
+                        <img src="https://img5.pic.in.th/file/secure-sv1/Gemini_Generated_Image_he1mh0he1mh0he1m.jpeg" alt="ป๊อปคอร์น ขนาดใหญ่">
+                         <div class="fb-item-info">
+                            <h4>ป๊อปคอร์น (L)</h4>
+                            <p class="fb-item-price">150 ฿</p>
+                        </div>
+                        <div class="fb-item-quantity">
+                            <button class="btn btn-quantity minus" aria-label="ลดจำนวน">-</button>
+                            <span class="quantity-display">0</span>
+                            <button class="btn btn-quantity plus" aria-label="เพิ่มจำนวน">+</button>
+                        </div>
+                    </div>
+
+                    <div class="fb-item-card" data-fb-id="popcorn-m" data-fb-name="ป๊อปคอร์น (M)" data-fb-price="120">
+                        <img src="https://img2.pic.in.th/pic/Gemini_Generated_Image_brx56brx56brx56b.jpeg" alt="ป๊อปคอร์น ขนาดกลาง">
+                         <div class="fb-item-info">
+                            <h4>ป๊อปคอร์น (M)</h4>
+                            <p class="fb-item-price">120 ฿</p>
+                        </div>
+                        <div class="fb-item-quantity">
+                            <button class="btn btn-quantity minus" aria-label="ลดจำนวน">-</button>
+                            <span class="quantity-display">0</span>
+                            <button class="btn btn-quantity plus" aria-label="เพิ่มจำนวน">+</button>
+                        </div>
+                    </div>
+
+                    <div class="fb-item-card" data-fb-id="soda" data-fb-name="น้ำอัดลม" data-fb-price="80">
+                        <img src="https://img2.pic.in.th/pic/Gemini_Generated_Image_yjzlgzyjzlgzyjzl.jpeg" alt="น้ำอัดลม">
+                        <div class="fb-item-info">
+                            <h4>น้ำอัดลม</h4>
+                            <p class="fb-item-price">80 ฿</p>
+                        </div>
+                        <div class="fb-item-quantity">
+                            <button class="btn btn-quantity minus" aria-label="ลดจำนวน">-</button>
+                            <span class="quantity-display">0</span>
+                            <button class="btn btn-quantity plus" aria-label="เพิ่มจำนวน">+</button>
+                        </div>
+                    </div>
+
+                 </div>
+                <div class="fb-subtotal">
+                    ราคารวมอาหารเครื่องดื่ม: <span id="fb-subtotal-price">0</span> ฿
+                </div>
+            </section>
+
+            <section class="content-section booking-summary hidden" id="summary-section">
+                 <h2 class="section-title"><i class="fas fa-receipt"></i> สรุปรายการจอง</h2>
+                 <div class="summary-details">
+                     <div class="summary-item">
+                         <span class="summary-label"><i class="fas fa-film"></i> ภาพยนตร์:</span>
+                         <span class="summary-value" id="summary-movie">-</span>
+                     </div>
+                     <div class="summary-item">
+                          <span class="summary-label"><i class="fas fa-map-marker-alt"></i> สาขา:</span>
+                          <span class="summary-value" id="summary-branch">-</span>
+                     </div>
+                      <div class="summary-item">
+                         <span class="summary-label"><i class="fas fa-calendar-day"></i> วันที่:</span>
+                         <span class="summary-value" id="summary-date">-</span>
+                     </div>
+                     <div class="summary-item">
+                         <span class="summary-label"><i class="fas fa-clock"></i> รอบฉาย:</span>
+                         <span class="summary-value" id="summary-time">-</span>
+                     </div>
+                     <div class="summary-item">
+                         <span class="summary-label"><i class="fas fa-couch"></i> ที่นั่ง:</span>
+                         <span class="summary-value seats-list" id="summary-seats">-</span>
+                     </div>
+                      <div class="summary-item">
+                         <span class="summary-label"><i class="fas fa-users"></i> จำนวน:</span>
+                         <span class="summary-value"><span id="summary-count">0</span> ที่นั่ง</span>
+                     </div>
+
+                     <div class="summary-item fb-summary-item">
+                         <span class="summary-label"><i class="fas fa-utensils"></i> อาหารเครื่องดื่ม:</span>
+                         <span class="summary-value" id="summary-fb-items">-</span>
+                     </div>
+                     <div class="summary-item fb-summary-item">
+                        <span class="summary-label"><i class="fas fa-dollar-sign"></i> ราคา F&B:</span>
+                        <span class="summary-value"><span id="summary-fb-price">0</span> ฿</span>
+                     </div>
+                 </div>
+                 <div class="summary-total">
+                     <span class="total-label">ยอดรวมสุทธิ</span>
+                     <span class="total-price">
+                         <span id="summary-price">0</span> ฿
+                     </span>
+                 </div>
+                <button id="confirm-btn" class="btn btn-primary btn-lg btn-block" disabled>
+                    <i class="fas fa-check-circle"></i> ยืนยันและดำเนินการต่อ (จำลอง)
+                </button>
+            </section>
+        </div>
+        <section class="content-section hidden" id="branch-info-section">
+             <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> สาขาทั้งหมดของ CineMagic</h2>
+             <p>เลือกสาขาใกล้บ้านคุณ พร้อมสัมผัสประสบการณ์ชมภาพยนตร์ที่ดีที่สุด</p>
+             <br>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-building"></i> เมเจอร์ ซีนีเพล็กซ์ รัชโยธิน</h4>
+                 <p>สาขาเรือธง ครบครันด้วยโรงภาพยนตร์ระบบล่าสุด และร้านค้ามากมาย</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: 1839 ถนนพหลโยธิน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-511-5427</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:00 - 23:00 น. (ทุกวัน)</p>
+                 <a href="https://maps.google.com/?q=Major+Cineplex+Ratchayothin" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-building"></i> เมเจอร์ ซีนีเพล็กซ์ สุขุมวิท</h4>
+                 <p>เดินทางสะดวก ติดรถไฟฟ้า BTS เอกมัย</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 5 เกตเวย์ เอกมัย, 982/22 ถนนสุขุมวิท แขวงพระโขนง เขตคลองเตย กรุงเทพฯ 10110</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-108-2899</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:30 - 22:30 น. (ทุกวัน)</p>
+                  <a href="https://maps.google.com/?q=Major+Cineplex+Sukhumvit" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-building"></i> เมเจอร์ ซีนีเพล็กซ์ รังสิต</h4>
+                 <p>ศูนย์รวมความบันเทิงครบวงจรย่านรังสิต</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 2 ฟิวเจอร์พาร์ค รังสิต, 94 ถนนพหลโยธิน ต.ประชาธิปัตย์ อ.ธัญบุรี จ.ปทุมธานี 12130</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-861-0199</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:30 - 22:00 น. (จ-ศ), 10:00 - 22:00 น. (ส-อา)</p>
+                 <a href="https://maps.google.com/?q=Major+Cineplex+Rangsit" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-gem"></i> พารากอน ซีนีเพล็กซ์</h4>
+                 <p>ประสบการณ์ชมภาพยนตร์ระดับเวิลด์คลาสใจกลางเมือง</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 5 สยามพารากอน, 991 ถนนพระราม 1 แขวงปทุมวัน เขตปทุมวัน กรุงเทพฯ 10330</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-129-4635</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:00 - 24:00 น. (ทุกวัน)</p>
+                 <a href="https://maps.google.com/?q=Paragon+Cineplex" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-water"></i> ไอคอน ซีเนคอนิค</h4>
+                 <p>ที่สุดแห่งนวัตกรรมโรงภาพยนตร์ริมแม่น้ำเจ้าพระยา</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 6 ไอคอนสยาม, 299 ซอยเจริญนคร 5 ถนนเจริญนคร แขวงคลองต้นไทร เขตคลองสาน กรุงเทพฯ 10600</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-288-0338</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:00 - 22:00 น. (ทุกวัน)</p>
+                 <a href="https://maps.google.com/?q=ICONSIAM+ICON+CINECONIC" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                 <h4><i class="fas fa-landmark"></i> เอสพลานาด ซีนีเพล็กซ์ รัชดาภิเษก</h4>
+                 <p>โรงภาพยนตร์ทันสมัย ใกล้ MRT ศูนย์วัฒนธรรมฯ</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 4 เอสพลานาด รัชดาภิเษก, 99 ถนนรัชดาภิเษก แขวงดินแดง เขตดินแดง กรุงเทพฯ 10400</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-660-9000</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:30 - 22:30 น. (ทุกวัน)</p>
+                 <a href="https://maps.google.com/?q=Esplanade+Cineplex+Ratchadaphisek" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+
+             <div class="branch-item" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: none;">
+                 <h4><i class="fas fa-shopping-bag"></i> เมกา ซีนีเพล็กซ์</h4>
+                 <p>โรงภาพยนตร์ขนาดใหญ่ในศูนย์การค้าเมกาบางนา</p>
+                 <p><i class="fas fa-map-pin"></i> ที่อยู่: ชั้น 2 เมกาบางนา, 39 หมู่ 6 ถนนบางนา-ตราด ต.บางแก้ว อ.บางพลี จ.สมุทรปราการ 10540</p>
+                 <p><i class="fas fa-phone"></i> โทรศัพท์: 02-105-1000</p>
+                 <p><i class="fas fa-clock"></i> เวลาทำการ: 10:00 - 22:00 น. (ทุกวัน)</p>
+                 <a href="https://maps.google.com/?q=Mega+Cineplex+Megabangna" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-map"></i> ดูแผนที่</a>
+             </div>
+        </section>
+        <section class="content-section hidden" id="promotion-section">
+            <h2 class="section-title"><i class="fas fa-percent"></i> โปรโมชั่นและสิทธิพิเศษ</h2>
+            <p>อัปเดตโปรโมชั่นล่าสุดจาก CineMagic ที่นี่!</p>
+            <br>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-calendar-day"></i> Movie Day วันพุธสุดคุ้ม</h4>
+                <p>พิเศษ! ทุกวันพุธ ตั๋วหนังทุกเรื่อง ทุกรอบ ทุกระบบ (ปกติ) เริ่มต้นเพียง 120 บาท ที่ CineMagic ทุกสาขา</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้ - 31 พฤษภาคม 2568</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-graduation-cap"></i> Student Special ลดสะใจวัยเรียน</h4>
+                <p>เพียงแสดงบัตรนักเรียน/นักศึกษา รับส่วนลดค่าตั๋วภาพยนตร์ทันที 40 บาท สำหรับที่นั่งปกติและ Honeymoon</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้ - 30 มิถุนายน 2568 (เฉพาะวันจันทร์-ศุกร์)</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-credit-card"></i> รับส่วนลดกับบัตรเครดิต Bank X</h4>
+                <p>ผู้ถือบัตรเครดิต Bank X รับส่วนลด 50 บาท/ที่นั่ง เมื่อซื้อตั๋วหนัง 2 ที่นั่งขึ้นไป (จำกัด 2 สิทธิ์/บัตร/เดือน)</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้ - 31 ธันวาคม 2568</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-birthday-cake"></i> Birthday Treat ดูหนังฟรีวันเกิด!</h4>
+                <p>สมาชิก CineMagic Member ดูหนังฟรี 1 ที่นั่ง ในสัปดาห์เกิด เพียงแสดงบัตรประชาชนและบัตรสมาชิก</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: ตลอดปี 2568</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-utensils"></i> Combo Set สุดคุ้ม</h4>
+                <p>ซื้อชุดป๊อปคอร์นและเครื่องดื่ม Combo Set ขนาดใดก็ได้ รับส่วนลดทันที 30 บาท เมื่อแสดงตั๋วหนังของวันนี้</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้ - 31 สิงหาคม 2568</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                <h4><i class="fas fa-mobile-alt"></i> จองผ่านแอป ลดเพิ่ม!</h4>
+                <p>ดาวน์โหลดและจองตั๋วหนังผ่าน CineMagic App ครั้งแรก รับโค้ดส่วนลด 50 บาท สำหรับการจองครั้งถัดไป</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้เป็นต้นไป (สำหรับผู้ใช้ใหม่)</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+
+            <div class="promo-item" style="border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; border-radius: 8px; background-color: var(--secondary-color);">
+                 <h4><i class="fas fa-users"></i> ดูหนังเป็นกลุ่ม ถูกกว่า!</h4>
+                <p>มาเป็นกลุ่ม 4 คนขึ้นไป รับส่วนลดค่าตั๋วหนัง 10% ทุกเรื่อง ทุกรอบ (เฉพาะการซื้อที่เคาน์เตอร์)</p>
+                <p><small><em>ระยะเวลาโปรโมชั่น: วันนี้ - 30 กันยายน 2568</em></small></p>
+                <a href="#" class="btn btn-secondary btn-sm">รายละเอียด / เงื่อนไข</a>
+            </div>
+        </section>
+        </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-links">
+                <a href="#">เกี่ยวกับเรา</a> |
+                <a href="#">คำถามที่พบบ่อย</a> |
+                <a href="#">ติดต่อเรา</a> |
+                <a href="#">นโยบายความเป็นส่วนตัว</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter-square"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram-square"></i></a>
+            </div>
+            <p class="footer-copy">© <span id="current-year">2025</span> CineMagic Booking. All Rights Reserved (Mockup Version).</p>
+        </div>
+    </footer>
+
+    <div id="confirmation-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close-button close-button" aria-label="Close modal">×</button>
+             <div class="modal-header">
+                 <i class="fas fa-check-circle modal-icon success"></i>
+                 <h2 class="modal-title">การจองสำเร็จ (จำลอง)</h2>
+            </div>
+            <div class="modal-body">
+                <p>ขอบคุณที่เลือกใช้บริการ CineMagic!</p>
+                <div id="modal-summary" class="modal-summary-box">
+                    </div>
+                 <p class="small-print">(นี่เป็นเพียงหน้าจำลอง ไม่มีการจองหรือชำระเงินเกิดขึ้นจริง ระบบจะรีเซ็ตในไม่ช้า)</p>
+            </div>
+             <div class="modal-footer">
+                <button id="modal-close-btn" class="btn btn-secondary close-button">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="trailer-modal" class="modal hidden">
+        <div class="modal-content trailer-modal-content">
+            <button class="modal-close-button trailer-close-button" aria-label="Close modal">×</button>
+            <div class="modal-body trailer-modal-body">
+                <div id="youtube-player-container">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay hidden">
+         <div class="spinner"></div>
+         <p>กำลังโหลดข้อมูลที่นั่ง กรุณารอสักครู่...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

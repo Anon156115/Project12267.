@@ -1,0 +1,1454 @@
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Core Palette */
+    --primary-color: #1a1a2e; /* Dark Blue */
+    --secondary-color: #0f101c; /* Darker Blue/Black */
+    --accent-color: #f7c948; /* Gold/Yellow */
+    --accent-color-rgb: 247, 201, 72; /* RGB for opacity */
+    --accent-red: #e53935; /* Slightly softer Red */
+    --accent-red-darker: #c62828;
+
+    /* Text & UI */
+    --text-color: #e0e0e0; /* Light Gray */
+    --text-dark: #333;
+    --text-muted: #a0a0a0; /* Muted text */
+    --white-color: #ffffff;
+    --border-color: #3a3a5e; /* Darker border */
+    --input-bg: #2a2a4e; /* Input background */
+    --link-color: var(--accent-color);
+    --link-hover-color: var(--white-color);
+
+    /* Seat Status */
+    --seat-normal: #4CAF50; /* Green */
+    --seat-normal-hover: #66BB6A;
+    --seat-premium: #2196F3; /* Blue */
+    --seat-premium-hover: #42A5F5;
+    --seat-honeymoon: #e91e63; /* Pink */
+    --seat-honeymoon-hover: #EC407A;
+    --seat-selected: var(--accent-color);
+    --seat-selected-text: var(--primary-color);
+    --seat-occupied: #6c757d; /* Gray */
+    --seat-occupied-text: #ccc;
+
+    /* Shadows & Transitions */
+    --box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --box-shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.3);
+    --box-shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --transition-speed: 0.3s; /* Standard duration */
+    --transition-timing: ease; /* Standard timing function */
+    --main-transition: all var(--transition-speed) var(--transition-timing);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
+}
+
+.container {
+    max-width: 1200px; /* Wider container */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Typography & Links --- */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--white-color);
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    font-weight: 500; /* Slightly less bold default */
+}
+
+h2.section-title {
+    font-size: 1.8rem;
+    font-weight: 700; /* Bold section titles */
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 8px;
+    margin-bottom: 30px; /* More space below title */
+}
+h2.section-title i {
+    margin-right: 12px;
+    color: var(--accent-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-timing);
+}
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove bottom space */
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    transition: var(--main-transition);
+    font-size: 0.95rem;
+    text-transform: none; /* Remove uppercase default */
+}
+.btn i { margin-right: 8px; }
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-red-darker));
+    color: var(--white-color);
+    box-shadow: 0 4px 8px rgba(229, 57, 53, 0.3);
+}
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(90deg, var(--accent-red-darker), var(--accent-red));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(229, 57, 53, 0.4);
+}
+.btn-primary:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    color: var(--white-color);
+}
+
+.btn-trailer { /* Specific button from movie card */
+    background-color: rgba(229, 57, 53, 0.8); /* Semi-transparent red */
+    color: var(--white-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease;
+    backdrop-filter: blur(2px);
+}
+.btn-trailer:hover {
+    background-color: var(--accent-red);
+}
+
+.btn-lg { font-size: 1.1rem; padding: 12px 25px; }
+.btn-block { display: block; width: 100%; }
+
+/* --- Forms --- */
+.form-input, .form-select {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing);
+}
+.form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.3);
+}
+.option-label {
+    font-weight: 500;
+    margin-bottom: 8px; /* Space between label and input */
+    display: block; /* Ensure label takes full width */
+    color: var(--text-muted);
+}
+.option-label i {
+    margin-right: 8px;
+    width: 18px; /* Align icons */
+    color: var(--accent-color);
+    text-align: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) brightness(0.8);
+    cursor: pointer;
+    transition: filter var(--transition-speed) var(--transition-timing);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(1);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    box-shadow: var(--box-shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    transition: opacity var(--transition-speed) var(--transition-timing);
+}
+.logo:hover {
+    opacity: 0.85;
+    text-decoration: none;
+}
+.logo img {
+    height: 45px; /* Slightly larger logo */
+    margin-right: 12px;
+}
+.logo span {
+    color: var(--white-color);
+    font-size: 1.4rem; /* Larger text */
+    font-weight: 700; /* Bold */
+    letter-spacing: 1px;
+}
+
+header nav { display: flex; align-items: center; gap: 15px; }
+
+/* Updated Nav Link Styles */
+header nav .nav-link {
+    color: var(--text-muted); /* Use muted color */
+    font-size: 1rem;
+    padding: 10px 15px; /* Adjusted padding */
+    border-radius: 6px; /* More rounding */
+    position: relative; /* Needed for ::before */
+    overflow: hidden; /* Hide ::before overflow */
+    transition: color var(--transition-speed) var(--transition-timing),
+                background-color var(--transition-speed) var(--transition-timing); /* Transition only color/bg */
+    text-decoration: none; /* Ensure no underline */
+    border-bottom: none; /* Remove original border */
+}
+header nav .nav-link i { margin-right: 6px; }
+
+header nav .nav-link::before { /* Animated underline effect */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%; /* Start off-screen */
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    transition: left var(--transition-speed) var(--transition-timing);
+    z-index: 1;
+}
+
+header nav .nav-link:hover,
+header nav .nav-link.active {
+    color: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.08); /* Subtle background */
+    text-decoration: none;
+}
+
+header nav .nav-link:hover::before,
+header nav .nav-link.active::before {
+    left: 0; /* Animate line in */
+}
+
+/* Updated Login Link Styles */
+header nav .login-link {
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-red-darker));
+    color: var(--white-color);
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(229, 57, 53, 0.2);
+    padding: 10px 18px; /* Adjusted padding */
+    border-radius: 6px; /* Match other links */
+    transition: all var(--transition-speed) var(--transition-timing); /* Transition all properties */
+}
+header nav .login-link:hover {
+    background: linear-gradient(90deg, var(--accent-red-darker), var(--accent-red));
+    box-shadow: 0 4px 8px rgba(229, 57, 53, 0.3);
+    transform: translateY(-1px); /* Slight lift */
+    color: var(--white-color); /* Ensure text color remains white */
+}
+header nav .login-link::before { /* No animated line for login button */
+    display: none;
+}
+
+
+/* --- Main Content & Sections --- */
+.main-content {
+    padding-top: 40px; /* More space below header */
+    padding-bottom: 40px;
+}
+
+/* General Section Styling (e.g., branch, promotion) */
+.content-section {
+    background-color: var(--primary-color);
+    padding: 30px;
+    margin-bottom: 35px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-medium);
+    /* Removed transitions from here, will apply to .main-view-section */
+}
+
+/* Styling for the main view containers that switch */
+.main-view-section {
+    /* Add transitions for fade effect */
+    transition: opacity var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hidden State (Using display: none to remove from layout) */
+.hidden {
+    display: none !important; /* Use important to override other display properties if necessary */
+    opacity: 0; /* Keep opacity 0 for consistency */
+}
+
+/* Fade Out State (Applied during transition) */
+.fade-out {
+    opacity: 0;
+    transform: translateY(15px); /* Move down slightly when fading out */
+    pointer-events: none; /* Disable interaction during fade */
+}
+
+/* Fade In State (Applied during transition) */
+/* Animation defined below */
+.fade-in {
+    /* Apply this class via JS when showing a section */
+    animation: fadeIn var(--transition-speed) var(--transition-timing) forwards;
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Progress Steps --- */
+.progress-section {
+    background: none; /* Remove section background */
+    box-shadow: none;
+    padding: 0 0 30px 0; /* Only bottom padding */
+    margin-bottom: 30px;
+    /* Add transition for showing/hiding */
+    transition: opacity var(--transition-speed) var(--transition-timing),
+                max-height var(--transition-speed) var(--transition-timing), /* Smooth height change */
+                visibility 0s var(--transition-speed); /* Delay visibility */
+    opacity: 1;
+    max-height: 200px; /* Adjust as needed */
+    overflow: hidden;
+    visibility: visible;
+}
+.progress-section.hidden {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    margin-bottom: 0;
+    visibility: hidden;
+    transition-delay: 0s, 0s, 0s; /* Remove delay when hiding */
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align top */
+    position: relative; /* For connector */
+}
+.progress-steps::before { /* Connector line */
+    content: '';
+    position: absolute;
+    top: 17px; /* Position in the middle of the icon */
+    left: 5%; /* Start after first step icon */
+    right: 5%; /* End before last step icon */
+    height: 3px;
+    background-color: var(--border-color);
+    z-index: -1;
+}
+
+.progress-steps .step {
+    color: var(--text-muted);
+    text-align: center;
+    position: relative;
+    flex: 1;
+    padding: 0 10px;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed) var(--transition-timing), color var(--transition-speed) var(--transition-timing);
+}
+.progress-steps .step .step-icon {
+    display: flex; /* Use flex for centering */
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    margin: 0 auto 10px auto;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 3px solid var(--secondary-color); /* Creates inner border effect */
+    transition: var(--main-transition);
+    position: relative; /* Ensure icon is above line */
+    z-index: 1;
+}
+.progress-steps .step .step-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+}
+
+/* Active Step */
+.progress-steps .step.active {
+    color: var(--accent-color);
+    font-weight: 700; /* Bold label */
+    opacity: 1;
+}
+.progress-steps .step.active .step-icon {
+     background-color: var(--accent-color);
+     color: var(--primary-color);
+     border-color: var(--accent-color);
+     transform: scale(1.1);
+}
+
+/* Connector line progress */
+.progress-steps .step.active::after {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    z-index: 0; /* Behind icon, above main line */
+    transform: translateX(-50%);
+}
+.progress-steps .step:first-child.active::after { width: 50%; transform: translateX(0); }
+.progress-steps .step:last-child.active::after { width: 50%; transform: translateX(-100%); }
+/* Special case for step 2 active */
+#step-2.active::after { width: 100%; transform: translateX(-100%);} /* Covers line from 1 to 2 */
+/* Special case for step 3 active */
+#step-3.active::after { width: 100%; transform: translateX(-100%); background-color: var(--accent-color);}
+/* Cover the line fully when step 3 is active */
+#step-2.active ~ #step-3.active::before { /* Select pseudo-element of step 3 based on active step 2 */
+    content: '';
+    position: absolute;
+    top: 17px;
+    right: 50%; /* Start from center of step 2 */
+    width: 50%; /* Extend to center of step 3 */
+    height: 3px;
+    background-color: var(--accent-color);
+    z-index: 0;
+}
+
+
+/* --- Movie Selection (Enhanced Grid) --- */
+/* NOTE: This section is inside #booking-flow-section now */
+.movie-selection {
+    /* Inherits .content-section styles */
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px; /* Increased gap */
+}
+
+/* Updated Movie Card Styles */
+.movie-card {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease-in-out; /* Adjusted transition */
+}
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.05); /* Enhanced hover effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    z-index: 10; /* Ensure hover card is on top */
+}
+.movie-card.active {
+    /* Use shadow or subtle scale instead of border for active state */
+    box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.6);
+    transform: scale(1.02);
+}
+
+.movie-card-poster {
+    position: relative;
+    width: 100%;
+    padding-top: 148%; /* Aspect ratio */
+    overflow: hidden;
+    background-color: var(--secondary-color); /* Placeholder bg */
+}
+.movie-card-poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-out; /* Smoother image zoom */
+}
+.movie-card:hover .movie-card-poster img {
+    transform: scale(1.1); /* Slightly more zoom */
+}
+
+.movie-card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%); /* Darker gradient */
+    opacity: 0;
+    transition: opacity 0.4s ease-out; /* Smoother overlay fade */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.movie-card:hover .movie-card-overlay { opacity: 1; }
+
+.movie-card-overlay .btn-trailer { margin-bottom: 10px; }
+
+.movie-card-overlay .movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+    background-color: rgba(0,0,0,0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.movie-card-overlay .movie-rating i { margin-right: 4px; }
+
+.movie-card-info {
+    padding: 15px;
+    text-align: left;
+    background-color: var(--input-bg);
+    flex-grow: 1;
+}
+.movie-card-title {
+    color: var(--white-color);
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.movie-card-genre {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+
+/* --- Booking Details --- */
+/* NOTE: This section is inside #booking-flow-section now */
+.booking-details {
+    /* Inherits .content-section styles */
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+}
+.movie-info-display {
+    flex-basis: 220px;
+    flex-shrink: 0;
+    text-align: center;
+}
+.movie-info-display img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    max-width: 100%;
+    box-shadow: var(--box-shadow-light);
+}
+.movie-info-display h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.options-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.option-group {
+    display: flex;
+    flex-direction: column;
+}
+.showtime-group .option-label { margin-bottom: 12px; }
+
+.showtimes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Updated Time Button Styles */
+.time-btn {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 9px 18px; /* Adjusted padding */
+    border-radius: 25px; /* More rounded */
+    font-weight: 500;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer; /* Add pointer */
+    transition: all 0.25s ease-out; /* Transition all properties */
+    position: relative; /* Needed for ::before */
+    overflow: hidden; /* Hide ::before overflow */
+    z-index: 1;
+}
+
+.time-btn::before { /* Background effect */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-red);
+    border-radius: 25px;
+    transform: scale(0); /* Start scaled down */
+    transition: transform 0.3s ease-out;
+    z-index: -1; /* Behind text */
+    opacity: 0; /* Hidden initially */
+}
+
+.time-btn:hover:not(.selected-time) {
+    background-color: var(--border-color); /* Subtle background change */
+    color: var(--white-color);
+    border-color: var(--accent-color); /* Highlight border */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.time-btn.selected-time {
+    color: var(--white-color); /* Text color on selected */
+    border-color: var(--accent-red);
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(229, 57, 53, 0.6);
+}
+
+.time-btn.selected-time::before {
+    transform: scale(1); /* Scale up background effect */
+    opacity: 1; /* Show background effect */
+}
+
+
+/* --- Seating Plan --- */
+/* NOTE: This section is inside #booking-flow-section now */
+/* Styling for hiding/showing is handled by JS + fade classes on the element itself */
+.seating-plan {
+    /* Inherits .content-section styles */
+}
+
+.seating-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.seating-header .section-title { margin-bottom: 0; }
+
+.countdown {
+    font-size: 1.1rem;
+    color: var(--accent-red);
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.countdown i { margin-right: 8px;}
+.countdown span { font-family: monospace; letter-spacing: 1px; }
+
+.screen-container {
+    background-color: var(--secondary-color);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.screen {
+    background: linear-gradient(to bottom, #555, #333);
+    color: white;
+    padding: 10px 0;
+    margin: 0 auto 30px auto;
+    width: 80%;
+    max-width: 400px;
+    min-width: 200px;
+    border-radius: 5px 5px 20px 20px / 5px 5px 10px 10px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border-bottom: 5px solid #222;
+}
+
+.seats {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Adjust as needed */
+    gap: 12px 18px;
+    max-width: 550px;
+    margin: 20px auto;
+    perspective: 500px;
+}
+
+.seat {
+    height: 38px;
+    border-radius: 6px 6px 2px 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    transition: var(--main-transition), transform 0.2s ease-out;
+    position: relative;
+    border-top: 4px solid rgba(255,255,255,0.3);
+    color: rgba(0,0,0,0.7);
+    transform-style: preserve-3d;
+    transform: rotateX(-10deg);
+}
+.seat::before { /* Seat bottom shadow */
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 3px;
+    right: 3px;
+    height: 3px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 2px;
+    transform: translateZ(-1px);
+}
+
+/* Seat Type Colors */
+.seat.normal { background-color: var(--seat-normal); }
+.seat.premium { background-color: var(--seat-premium); }
+.seat.honeymoon {
+    background-color: var(--seat-honeymoon);
+    grid-column: span 2;
+}
+
+.seat:not(.occupied):hover {
+    transform: scale(1.15) rotateX(0deg);
+    z-index: 10;
+    border-top-width: 5px;
+}
+.seat.normal:not(.occupied):hover { background-color: var(--seat-normal-hover); }
+.seat.premium:not(.occupied):hover { background-color: var(--seat-premium-hover); }
+.seat.honeymoon:not(.occupied):hover { background-color: var(--seat-honeymoon-hover); }
+
+.seat.selected {
+    background-color: var(--seat-selected);
+    color: var(--seat-selected-text);
+    transform: scale(1.15) rotateX(0deg);
+    border-top-color: rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px var(--seat-selected);
+}
+
+.seat.occupied {
+    background-color: var(--seat-occupied);
+    color: var(--seat-occupied-text);
+    cursor: not-allowed;
+    opacity: 0.6;
+    border-top-color: rgba(0,0,0,0.1);
+    transform: rotateX(-5deg);
+}
+.seat.occupied::before { background: rgba(0,0,0,0.1); }
+
+
+/* Legend */
+.legend {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+}
+.legend-sample {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    border-radius: 4px 4px 1px 1px;
+    cursor: default;
+    border-top: 3px solid rgba(255,255,255,0.3);
+    position: relative;
+}
+.legend-sample::before {
+    content: ''; position: absolute; bottom: -2px; left: 2px; right: 2px;
+    height: 2px; background: rgba(0,0,0,0.2); border-radius: 1px;
+}
+.legend-sample.selected { border-top-color: rgba(0,0,0,0.3); background-color: var(--seat-selected);} /* Added bg color */
+.legend-sample.occupied { border-top-color: rgba(0,0,0,0.1); opacity: 0.6; background-color: var(--seat-occupied);} /* Added bg color */
+.legend .seat-price { font-weight: bold; color: var(--white-color);}
+
+
+/* --- Food & Beverage Selection (NEW) --- */
+/* NOTE: This section is inside #booking-flow-section now */
+/* Styling for hiding/showing is handled by JS + fade classes on the element itself */
+.fb-selection {
+    /* Inherits .content-section styles */
+}
+.fb-selection .section-title i { color: var(--accent-red); } /* Change icon color */
+
+.fb-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.fb-item-card {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.fb-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.fb-item-card img {
+    width: 100%;
+    height: 120px; /* Adjust height as needed */
+    object-fit: cover;
+    background-color: #555; /* Placeholder background */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.fb-item-info {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Push quantity controls down */
+}
+
+.fb-item-info h4 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--white-color);
+    line-height: 1.3;
+}
+
+.fb-item-price {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin: 0;
+}
+
+.fb-item-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--input-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-quantity {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 1px solid var(--border-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 28px; /* Adjust for vertical centering */
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+    display: flex; /* Center icon/text */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-quantity:hover {
+    background-color: var(--border-color);
+}
+.btn-quantity:active {
+    transform: scale(0.9);
+}
+
+.btn-quantity.minus {
+    color: var(--accent-red);
+}
+.btn-quantity.plus {
+    color: var(--seat-normal); /* Green */
+}
+
+.quantity-display {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 15px;
+    min-width: 25px; /* Ensure space for number */
+    text-align: center;
+    color: var(--white-color);
+}
+
+.fb-subtotal {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color);
+    text-align: right;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+#fb-subtotal-price {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-left: 10px;
+}
+
+
+/* --- Booking Summary --- */
+/* NOTE: This section is inside #booking-flow-section now */
+/* Styling for hiding/showing is handled by JS + fade classes on the element itself */
+.booking-summary {
+    /* Inherits .content-section styles */
+    background-color: var(--secondary-color); /* Overriding content-section background */
+    border-left: 5px solid var(--accent-color);
+    padding: 30px;
+}
+.booking-summary .section-title i { color: var(--accent-red); }
+
+.summary-details {
+    margin-bottom: 25px;
+}
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+    align-items: center;
+}
+.summary-item:last-child {
+     /* No border on the very last item */
+     border-bottom: none;
+}
+.summary-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+.summary-label i {
+    width: 16px;
+    text-align: center;
+    color: var(--accent-color);
+}
+.summary-value {
+    color: var(--white-color);
+    font-weight: 500;
+    text-align: right;
+}
+.summary-value.seats-list {
+    max-width: 70%;
+    white-space: normal;
+    word-break: break-all;
+}
+
+#summary-fb-items {
+    font-size: 0.9em;
+    white-space: normal;
+    max-width: 65%;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.summary-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: bold;
+}
+.summary-total .total-label {
+    font-size: 1.3rem;
+    color: var(--white-color);
+}
+.summary-total .total-price {
+    font-size: 1.8rem;
+    color: var(--accent-red);
+    font-weight: 700;
+}
+.booking-summary .btn { margin-top: 25px; }
+
+
+/* --- Branch Info Section --- */
+/* NOTE: This section is inside #branch-info-section (which has .content-section) */
+#branch-info-section .branch-item {
+    /* Styling for individual branch items within the section */
+    /* Example styles from inline CSS in HTML moved here for better practice */
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+#branch-info-section .branch-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0; /* Remove bottom margin for the last item */
+}
+#branch-info-section .branch-item h4 i {
+    margin-right: 8px;
+    color: var(--accent-color);
+}
+#branch-info-section .branch-item p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+#branch-info-section .branch-item p i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    color: var(--accent-color);
+}
+#branch-info-section .branch-item p:last-of-type {
+    margin-bottom: 15px; /* Add space before button */
+}
+#branch-info-section .btn-sm { /* Example for smaller button */
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* --- Promotion Section --- */
+/* NOTE: This section is inside #promotion-section (which has .content-section) */
+#promotion-section .promo-item {
+     /* Styling for individual promo items */
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--secondary-color); /* Example background */
+    display: flex; /* Optional: Use flex for layout */
+    gap: 20px; /* Optional: Space between image and text */
+    align-items: center; /* Optional: Align items vertically */
+}
+#promotion-section .promo-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Optional: Styles for promo image */
+#promotion-section .promo-image {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 150px; /* Example width */
+}
+#promotion-section .promo-image img {
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Optional: Styles for promo content */
+#promotion-section .promo-content {
+    flex-grow: 1; /* Allow text content to take remaining space */
+}
+
+#promotion-section .promo-item h4 i {
+    margin-right: 8px;
+    color: var(--accent-red); /* Example icon color */
+}
+#promotion-section .promo-item p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+#promotion-section .promo-item p small {
+    color: var(--text-muted);
+    display: block; /* Ensure small text is on its own line */
+    margin-top: 5px;
+}
+#promotion-section .promo-item .btn-sm { /* Example for smaller button */
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-top: 10px; /* Space above button */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-muted);
+    padding: 30px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.footer-links a {
+    color: var(--text-muted);
+    margin: 0 10px;
+    transition: color var(--transition-speed) var(--transition-timing);
+}
+.footer-links a:hover { color: var(--white-color); }
+.footer-social a {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    margin: 0 8px;
+    transition: color var(--transition-speed) var(--transition-timing);
+}
+.footer-social a:hover { color: var(--accent-color); }
+.footer-copy { margin-top: 10px; font-size: 0.85rem; }
+
+
+/* --- Modal (General & Confirmation) --- */
+.modal {
+    position: fixed;
+    z-index: 1001;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) var(--transition-timing), visibility 0s var(--transition-speed); /* Delay visibility change */
+}
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    padding: 0; /* Remove padding, handle internally */
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 550px; /* Default max width */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: var(--text-color);
+    overflow: hidden; /* Hide overflowing content */
+    transform: scale(0.95) translateY(10px);
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+.modal:not(.hidden) .modal-content {
+     transform: scale(1) translateY(0);
+}
+
+/* Confirmation Modal Specifics */
+.modal-header {
+    background-color: var(--secondary-color);
+    padding: 20px 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.modal-icon.success { color: #4CAF50; }
+.modal-icon.error { color: var(--accent-red); }
+.modal-title {
+    color: var(--white-color);
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.modal-close-button { /* General close button style */
+    color: var(--text-muted);
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color var(--transition-speed) var(--transition-timing), transform 0.2s ease;
+    background: none;
+    border: none;
+    padding: 5px;
+    line-height: 1;
+    z-index: 10; /* Ensure it's above content */
+}
+.modal-close-button:hover {
+    color: var(--white-color);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 25px 30px;
+}
+.modal-body p { margin-bottom: 15px; }
+
+.modal-summary-box {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+.modal-summary-box p {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align top for potentially long F&B list */
+    line-height: 1.5; /* Improve readability for multi-line items */
+}
+.modal-summary-box p:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0;}
+.modal-summary-box strong {
+    color: var(--accent-color);
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+.modal-summary-box span {
+    text-align: right; /* Ensure values align right */
+}
+
+.modal .small-print {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    background-color: var(--secondary-color);
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* --- Trailer Modal Styles --- */
+.trailer-modal-content {
+    background-color: #000; /* Black background */
+    padding: 0;
+    border: none;
+    max-width: 800px; /* Wider for video */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    aspect-ratio: 16 / 9; /* Force 16:9 aspect ratio */
+    width: 90%; /* Responsive width */
+}
+
+.trailer-modal-body {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#youtube-player-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure iframe fits */
+}
+
+#youtube-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.trailer-close-button { /* Specific style for trailer close */
+    position: absolute;
+    top: -35px; /* Position outside modal top-right */
+    right: 0px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 30px; /* Adjust for centering X */
+    text-align: center;
+    padding: 0;
+    opacity: 0.8;
+    transition: opacity var(--transition-speed) var(--transition-timing), transform 0.2s ease;
+}
+.trailer-close-button:hover {
+    opacity: 1;
+    transform: rotate(90deg) scale(1.1); /* Add scale on hover */
+    color: #fff; /* Ensure color stays white */
+}
+
+
+/* --- Loading Overlay --- */
+.loading-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(15, 16, 28, 0.9); /* Match secondary color with opacity */
+    z-index: 1002; /* Above modal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    backdrop-filter: blur(3px);
+    transition: opacity var(--transition-speed) var(--transition-timing), visibility 0s var(--transition-speed);
+    opacity: 0; /* Start hidden */
+    visibility: hidden;
+}
+.loading-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.spinner {
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    border-left-color: var(--accent-color); /* Make it look more dynamic */
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loading-overlay p {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .container { max-width: 960px; }
+    .movie-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px;}
+    .booking-details { flex-direction: column; gap: 25px;}
+    .movie-info-display { flex-basis: auto; width: 200px; margin: 0 auto; }
+    .seats { grid-template-columns: repeat(5, 1fr); max-width: 450px; }
+    .seat.honeymoon { grid-column: span 2; }
+    .fb-items-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    #promotion-section .promo-item { flex-direction: column; text-align: center;} /* Stack promo items */
+    #promotion-section .promo-image { width: 80%; max-width: 250px; margin: 0 auto 15px auto;}
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 15px; }
+    h2.section-title { font-size: 1.6rem; }
+    /* Basic Mobile Nav Toggle (Requires JS for burger menu) */
+    header nav { display: none; /* Hide nav by default */ }
+    /* Add styles for a burger icon and a mobile menu container later */
+    /* .mobile-nav-active header nav { display: flex; flex-direction: column; ... } */
+
+    .header-container { justify-content: space-between; }
+    .movie-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .seats { grid-template-columns: repeat(4, 1fr); max-width: 90%; gap: 10px 15px;}
+    .seat { height: 34px; }
+    .seat.honeymoon { grid-column: span 2; }
+    .fb-items-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .progress-steps .step .step-label { font-size: 0.8rem; }
+    .progress-steps .step .step-icon { width: 30px; height: 30px; font-size: 0.9rem; border-width: 2px; }
+    .progress-steps::before, .progress-steps .step::after, #step-2.active::after, #step-3.active::after, #step-2.active ~ #step-3.active::before { top: 15px; height: 2px; }
+    .showtimes { gap: 10px; }
+    .time-btn { padding: 7px 15px; font-size: 0.9rem; }
+    .legend { gap: 10px 20px; font-size: 0.85rem; }
+    .legend-sample { width: 24px; height: 24px; }
+    .summary-item { flex-direction: column; align-items: flex-start; gap: 3px; } /* Adjust summary layout */
+    .summary-value { text-align: left; margin-top: 5px; max-width: 100%;}
+    #summary-fb-items { max-width: 100%; text-align: left; } /* Ensure F&B summary wraps */
+    .summary-total { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .summary-total .total-label { font-size: 1.1rem; }
+    .summary-total .total-price { font-size: 1.5rem; }
+    .modal-content { max-width: 95%; }
+    .modal-header, .modal-body, .modal-footer { padding: 20px;}
+    .modal-title { font-size: 1.3rem; }
+    .trailer-modal-content { width: 95%; /* Adjust trailer modal width */ }
+    .trailer-close-button { top: 5px; right: 5px; font-size: 1.8rem; width: 30px; height: 30px; line-height: 28px; } /* Adjust close button for mobile */
+}
+
+@media (max-width: 480px) {
+    .movie-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    .movie-card-poster { padding-top: 150%; }
+    .seats { grid-template-columns: repeat(3, 1fr); gap: 8px 12px;}
+    .seat { height: 30px; font-size: 9px; }
+    .seat.honeymoon { grid-column: span 2; } /* Might look odd on 3 cols, consider alternatives */
+    .fb-items-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } /* Adjust F&B grid */
+    .fb-item-card img { height: 100px; }
+    .fb-item-info h4 { font-size: 0.9rem; }
+    .seating-header { flex-direction: column; align-items: flex-start; gap: 10px;}
+    .countdown { width: 100%; text-align: center; }
+    .screen { width: 90%; font-size: 0.8rem; letter-spacing: 2px; }
+    .legend-item { font-size: 0.8rem; gap: 8px;}
+    .legend-sample { width: 20px; height: 20px; }
+    #promotion-section .promo-image { width: 90%; max-width: 200px;} /* Adjust promo image size */
+}
